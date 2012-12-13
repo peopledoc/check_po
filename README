@@ -1,0 +1,5 @@
+########
+check_po
+########
+
+Test if the po is fully translated without fuzzy.
