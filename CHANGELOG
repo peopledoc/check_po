@@ -4,6 +4,8 @@ Changelog
 0.2 (unreleased)
 ----------------
 
+- Added podiff command: highlights differences between two PO files.
+
 0.1 (2012-12-13)
 ----------------
 
