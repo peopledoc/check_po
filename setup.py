@@ -20,6 +20,7 @@ entry_points = {
     'console_scripts': [
         'check_po = check_po:main',
         'podiff = check_po.podiff:main',
+        'check_urls = check_po.check_urls:main',
     ]
 }
 
