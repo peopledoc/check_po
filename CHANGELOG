@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.3 (unreleased)
+0.3 (2013-04-17)
 ----------------
 
 - Add check_urls duplicate: check in a list of po if an URL translation is defined for two differents url.
