@@ -7,7 +7,7 @@ from collections import defaultdict
 
 def main():
     if len(sys.argv) < 2:
-        print "USAGE: %s <po_files...>\n" % sys.argv[0]
+        writeout("USAGE: %s <po_files...>\n" % sys.argv[0])
         sys.exit(1)
 
     po_files = []
@@ -15,7 +15,7 @@ def main():
     # Open PO files
     for po_file_path in sys.argv[1:]:
         if not os.path.exists(po_file_path):
-            print "File not found %s\n" % po_file_path
+            writeout("File not found %s\n" % po_file_path)
             sys.exit(2)
         po_files.append(polib.pofile(po_file_path))
 
@@ -29,10 +29,10 @@ def main():
 
             if msgstr and entries[msgstr] and msgid not in entries[msgstr]:
                 if msgid.startswith('^') and msgstr in entries:
-                    print "DUPLICATE: %s" % msgstr
+                    writeout("DUPLICATE: %s" % msgstr)
                     for msg in entries[msgstr]:
-                        print "\t\t\t%s" % msg
-                    print "\t\t\t%s\n" % msgid
+                        writeout("\t\t\t%s" % msg)
+                    writeout("\t\t\t%s\n" % msgid)
             entries[msgstr].append(msgid)
 
     sys.exit(0)
