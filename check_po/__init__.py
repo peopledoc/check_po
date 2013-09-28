@@ -3,13 +3,8 @@ import os.path
 import polib
 
 
-def main():
-    if len(sys.argv) != 2:
-        print "USAGE: %s <po_file_to_check>\n" % sys.argv[0]
-        sys.exit(1)
 
-    po_file_path = sys.argv[1]
-
+def check_pofile(po_file_path):
     if not os.path.exists(po_file_path):
         print "File not found %s\n" % po_file_path
         sys.exit(2)
@@ -38,3 +33,12 @@ def main():
 
     print "%s: PO File OK\n\n" % po_file_path
     sys.exit(0)
+
+
+def main():
+    if len(sys.argv) != 2:
+        print "USAGE: %s <po_file_to_check>\n" % sys.argv[0]
+        sys.exit(1)
+
+    po_file_path = sys.argv[1]
+    check_pofile(po_file_path)
