@@ -4,8 +4,8 @@ python:
     - "3.3"
 install:
     - python setup.py develop
-    - pip install flake8
-script: flake8 check_po && python setup.py test
+    - pip install flake8 coverage
+script: flake8 check_po && coverage run --source=check_po setup.py -q nosetests
 after_success:
   # Report coverage results to coveralls.io
   - pip install coveralls
