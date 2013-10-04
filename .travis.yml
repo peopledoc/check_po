@@ -4,6 +4,7 @@ python:
     - "3.3"
 install:
     - python setup.py develop
+    - pip install flake8
 script: flake8 check_po && python setup.py test
 after_success:
   # Report coverage results to coveralls.io
