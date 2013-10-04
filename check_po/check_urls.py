@@ -1,10 +1,45 @@
 # -*- coding: utf-8 -*-
 import sys
-import os.path
 import polib
 from collections import defaultdict
 
-from .utils import encode, writeout
+from ._compat import encode, writeout
+
+
+class CheckUrls(object):
+    def __init__(self, files=None):
+        if files is None:
+            files = []
+
+        self.files = []
+        for f in files:
+            self.add_file(f)
+
+        self.entries = defaultdict(list)
+
+    def add_file(self, f):
+        """Add a file in the list of pofile to check."""
+        self.files.append(polib.pofile(f))
+
+    def check_other_file(self, po):
+        """Check a po file against already checked files."""
+        for entry in po:
+            msgid = encode(entry.msgid)
+            msgstr = encode(entry.msgstr)
+
+            if msgstr and self.entries[msgstr] \
+                    and msgid not in self.entries[msgstr]:
+                if msgid.startswith('^') and msgstr in self.entries:
+                    writeout("DUPLICATE: %s" % msgstr)
+                    for msg in self.entries[msgstr]:
+                        writeout("\t\t\t%s" % msg)
+                    writeout("\t\t\t%s\n" % msgid)
+            self.entries[msgstr].append(msgid)
+
+    def check_urls(self):
+        """Check urls for all files."""
+        for f in self.files:
+            self.check_other_file(f)
 
 
 def main():
@@ -12,31 +47,8 @@ def main():
         writeout("USAGE: %s <po_files...>\n" % sys.argv[0])
         sys.exit(1)
 
-    po_files = []
-
-    # Open PO files
-    for po_file_path in sys.argv[1:]:
-        if not os.path.exists(po_file_path):
-            writeout("File not found %s\n" % po_file_path)
-            sys.exit(2)
-        po_files.append(polib.pofile(po_file_path))
-
-    # Check for duplicates
-    entries = defaultdict(list)
-
-    for po in po_files:
-        for entry in po:
-
-            msgid = encode(entry.msgid)
-            msgstr = encode(entry.msgstr)
-
-            if msgstr and entries[msgstr] and msgid not in entries[msgstr]:
-                if msgid.startswith('^') and msgstr in entries:
-                    writeout("DUPLICATE: %s" % msgstr)
-                    for msg in entries[msgstr]:
-                        writeout("\t\t\t%s" % msg)
-                    writeout("\t\t\t%s\n" % msgid)
-            entries[msgstr].append(msgid)
+    url_checker = CheckUrls(sys.argv[1:])
+    url_checker.check_urls()
 
     sys.exit(0)
 

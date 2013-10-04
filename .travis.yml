@@ -1,0 +1,11 @@
+language: python
+python:
+    - "2.7"
+    - "3.3"
+install:
+    - python setup.py develop
+script: flake8 check_po && python setup.py test
+after_success:
+  # Report coverage results to coveralls.io
+  - pip install coveralls
+  - coveralls

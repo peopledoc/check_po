@@ -22,7 +22,7 @@ requirements = [
 
 entry_points = {
     'console_scripts': [
-        'check_po = check_po:main',
+        'check_po = check_po.check_po:main',
         'podiff = check_po.podiff:main',
         'check_urls = check_po.check_urls:main',
     ]
@@ -52,4 +52,7 @@ if __name__ == '__main__':  # ``import setup`` doesn't trigger setup().
         zip_safe=False,
         install_requires=requirements,
         entry_points=entry_points,
+        test_suite='nose.collector',
+        setup_requires=['nose'],
+        tests_require=['nose', 'coverage']
     )

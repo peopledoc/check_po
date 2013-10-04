@@ -2,3 +2,6 @@
 *~
 /dist
 /*.egg-info/
+/*.egg/
+/.coverage
+/.tox/
