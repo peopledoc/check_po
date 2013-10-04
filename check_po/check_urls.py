@@ -4,6 +4,8 @@ import os.path
 import polib
 from collections import defaultdict
 
+from .utils import encode, writeout
+
 
 def main():
     if len(sys.argv) < 2:
@@ -24,8 +26,9 @@ def main():
 
     for po in po_files:
         for entry in po:
-            msgid = entry.msgid.encode('utf-8')
-            msgstr = entry.msgstr.encode('utf-8')
+
+            msgid = encode(entry.msgid)
+            msgstr = encode(entry.msgstr)
 
             if msgstr and entries[msgstr] and msgid not in entries[msgstr]:
                 if msgid.startswith('^') and msgstr in entries:
@@ -36,6 +39,7 @@ def main():
             entries[msgstr].append(msgid)
 
     sys.exit(0)
+
 
 if __name__ == "__main__":
     main()

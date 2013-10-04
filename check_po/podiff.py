@@ -2,6 +2,7 @@
 import sys
 import os.path
 import polib
+from .utils import writeout
 
 
 def main():
@@ -47,6 +48,7 @@ def main():
         if msgid not in ENTRIES2:
             writeout("DELETED : %s\n- %s" % (msgid, msgstr))
     sys.exit(0)
+
 
 if __name__ == "__main__":
     main()
