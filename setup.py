@@ -10,12 +10,16 @@ def read_relative_file(filename):
     with open(join(dirname(abspath(__file__)), filename)) as f:
         return f.read()
 
+
 name = 'check_po'
+
 version = read_relative_file('VERSION').strip()
 readme = read_relative_file('README')
-requirements = ['setuptools',
-                'polib'
-                ]
+requirements = [
+    'setuptools',
+    'polib',
+]
+
 entry_points = {
     'console_scripts': [
         'check_po = check_po:main',
@@ -25,23 +29,27 @@ entry_points = {
 }
 
 if __name__ == '__main__':  # ``import setup`` doesn't trigger setup().
-    setup(name=name,
-          version=version,
-          description="""Check_po to verify if everything is translated
-                         and that no fuzzy are still here.""",
-          long_description=readme,
-          classifiers=[
-              "Programming Language :: Python",
-              'License :: Other/Proprietary License',
-          ],
-          keywords='',
-          author='Rémy Hubscher',
-          author_email='hubscher.remy@gmail.com',
-          url='https://github.com/novagile/%s' % name,
-          license='WTFPL',
-          packages=['check_po'],
-          include_package_data=True,
-          zip_safe=False,
-          install_requires=requirements,
-          entry_points=entry_points,
-          )
+    setup(
+        name=name,
+        version=version,
+        description="""Check_po to verify if everything is translated
+                       and that no fuzzy are still here.""",
+        long_description=readme,
+        classifiers=[
+            "License :: Other/Proprietary License",
+            "Programming Language :: Python",
+            "Programming Language :: Python :: 2.6",
+            "Programming Language :: Python :: 2.7",
+            "Programming Language :: Python :: 3",
+        ],
+        keywords='',
+        author='Rémy Hubscher',
+        author_email='hubscher.remy@gmail.com',
+        url='https://github.com/novagile/%s' % name,
+        license='WTFPL',
+        packages=['check_po'],
+        include_package_data=True,
+        zip_safe=False,
+        install_requires=requirements,
+        entry_points=entry_points,
+    )
