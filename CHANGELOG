@@ -1,10 +1,11 @@
 Changelog
 =========
 
-0.5 (unreleased)
+0.5 (2013-10-04)
 ----------------
 
-- Nothing changed yet.
+- Fix compatibility with Python3 for all the commands (podiff, check_urls, check_po)
+- Add tests
 
 
 0.4 (2013-10-04)
