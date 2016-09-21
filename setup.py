@@ -16,7 +16,6 @@ name = 'check_po'
 version = read_relative_file('VERSION').strip()
 readme = read_relative_file('README')
 requirements = [
-    'setuptools',
     'polib',
 ]
 
