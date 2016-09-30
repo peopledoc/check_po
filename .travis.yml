@@ -1,9 +1,12 @@
 language: python
 python:
     - "2.7"
-    - "3.3"
+    - "3.4"
+    - "3.5"
+before_install:
+    - pip install -U pip setuptools
 install:
-    - python setup.py develop
+    - pip install -e .
     - pip install flake8 coverage
 script: flake8 check_po && coverage run --source=check_po setup.py -q nosetests
 after_success:

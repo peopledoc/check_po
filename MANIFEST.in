@@ -1,4 +1,3 @@
 recursive-include check_po *
 global-exclude *.pyc
-include *.txt
-include VERSION README CHANGELOG LICENSE INSTALL AUTHORS
+include LICENSE AUTHORS ChangeLog

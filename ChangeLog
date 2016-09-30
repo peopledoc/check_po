@@ -1,0 +1,56 @@
+CHANGES
+=======
+
+0.7
+---
+
+* ref #7 - Upgrade & release python3
+* Remove setuptools from install_require in setup.py
+
+0.6
+---
+
+* Update setup.py
+* Back to development: 0.6
+
+0.5
+---
+
+* Preparing release 0.5
+* Travis uses coverage for better coveralls information
+* Add badge on README
+* Add flake8
+* Update README
+* Add Tests + Rewrite everything to make it works with PY3
+* Fix .encode error and writeout missing imports
+* Back to development: 0.5
+
+0.4
+---
+
+* Preparing release 0.4
+* Add Python3 compatibility to other utils
+* Add Python3 compatibility
+* Rationalize code layout
+* Back to development: 0.4
+
+0.3
+---
+
+* Preparing release 0.3
+* Update Changelog
+* Add check_urls translation
+* Back to development: 0.3
+
+0.2
+---
+
+* Preparing release 0.2
+* Added podiff command
+* Back to development
+
+0.1
+---
+
+* Release 0.1
+* Python project architecture
