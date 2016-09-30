@@ -14,3 +14,5 @@ Test if the po is fully translated without fuzzy.
    :target: https://crate.io/packages/check_po/
 .. image:: https://pypip.in/d/check_po/badge.png
    :target: https://crate.io/packages/check_po/
+
+`Documentation<https://github.com/novafloss/check_po/wiki>`_
