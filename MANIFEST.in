@@ -1,3 +1,3 @@
 recursive-include check_po *
 global-exclude *.pyc
-include LICENSE AUTHORS ChangeLog
+include LICENSE AUTHORS.rst CHANGELOG.rst README.rst
