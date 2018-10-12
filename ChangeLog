@@ -1,6 +1,8 @@
 CHANGES
 =======
 
+* Other cleanups
+* Update CI
 * Change copyright to PeopleDoc
 * Adding universal wheel in setup.cfg
 
