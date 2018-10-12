@@ -1,11 +1,14 @@
 CHANGES
 =======
 
+* Change copyright to PeopleDoc
+* Adding universal wheel in setup.cfg
+
 0.7
 ---
 
 * ref #7 - Upgrade & release python3
-* Remove setuptools from install_require in setup.py
+* Remove setuptools from install\_require in setup.py
 
 0.6
 ---
@@ -39,7 +42,7 @@ CHANGES
 
 * Preparing release 0.3
 * Update Changelog
-* Add check_urls translation
+* Add check\_urls translation
 * Back to development: 0.3
 
 0.2
