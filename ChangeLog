@@ -1,6 +1,8 @@
 CHANGES
 =======
 
+* Install nose to be able to run tests with: python setup.py test
+* Upgrade to pbr 4.3
 * Other cleanups
 * Update CI
 * Change copyright to PeopleDoc
