@@ -1,7 +1,7 @@
 *.pyc
 *~
-/dist
-/*.egg-info/
-/*.egg/
-/.coverage
-/.tox/
+dist
+*.egg-info/
+.coverage
+.tox/
+.eggs/
