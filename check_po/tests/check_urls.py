@@ -1,20 +1,19 @@
-# -*- coding: utf-8 -*-
 import unittest
 import sys
-from .._compat import StringIO
+from io import StringIO
 
-from ..check_urls import CheckUrls, main
+from ..check_urls import CheckURLs, main
 
 
-class CheckUrlsTestCase(unittest.TestCase):
+class CheckURLsTestCase(unittest.TestCase):
 
     def test_nofile(self):
-        self.urls_checker = CheckUrls()
+        self.urls_checker = CheckURLs()
         self.urls_checker.check_urls()
 
     def test_noconflict(self):
         sys.stdout = StringIO()
-        self.urls_checker = CheckUrls(["""
+        self.urls_checker = CheckURLs(["""
 msgid "^request/$"
 msgstr "^demande/$"
 
@@ -26,7 +25,7 @@ msgstr "^demandeur/$"
 
     def test_conflict(self):
         sys.stdout = StringIO()
-        self.urls_checker = CheckUrls(["""
+        self.urls_checker = CheckURLs(["""
 msgid "^request/$"
 msgstr "^demande/$"
 

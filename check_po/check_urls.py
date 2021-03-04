@@ -1,12 +1,9 @@
-# -*- coding: utf-8 -*-
 import sys
 import polib
 from collections import defaultdict
 
-from ._compat import encode, writeout
 
-
-class CheckUrls(object):
+class CheckURLs:
     def __init__(self, files=None):
         if files is None:
             files = []
@@ -24,16 +21,16 @@ class CheckUrls(object):
     def check_other_file(self, po):
         """Check a po file against already checked files."""
         for entry in po:
-            msgid = encode(entry.msgid)
-            msgstr = encode(entry.msgstr)
+            msgid = entry.msgid
+            msgstr = entry.msgstr
 
             if msgstr and self.entries[msgstr] \
                     and msgid not in self.entries[msgstr]:
                 if msgid.startswith('^') and msgstr in self.entries:
-                    writeout("DUPLICATE: %s" % msgstr)
+                    print(f"DUPLICATE: {msgstr}")
                     for msg in self.entries[msgstr]:
-                        writeout("\t\t\t%s" % msg)
-                    writeout("\t\t\t%s\n" % msgid)
+                        print(f"\t\t\t{msg}")
+                    print(f"\t\t\t{msgid}\n")
             self.entries[msgstr].append(msgid)
 
     def check_urls(self):
@@ -44,10 +41,10 @@ class CheckUrls(object):
 
 def main():
     if len(sys.argv) < 2:
-        writeout("USAGE: %s <po_files...>\n" % sys.argv[0])
+        print(f"USAGE: {sys.argv[0]} <po_files...>\n")
         sys.exit(1)
 
-    url_checker = CheckUrls(sys.argv[1:])
+    url_checker = CheckURLs(sys.argv[1:])
     url_checker.check_urls()
 
     sys.exit(0)

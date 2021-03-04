@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
 import sys
 import os.path
 import polib
-from ._compat import writeout, encode, items
 
 
-class PoDiff(object):
+class PODiff:
 
     def __init__(self, file1, file2):
         self.po1 = polib.pofile(file1)
@@ -16,44 +14,42 @@ class PoDiff(object):
 
     def diff(self):
         for entry in self.po1:
-            self.entries[encode(entry.msgid)] = encode(entry.msgstr)
+            self.entries[entry.msgid] = entry.msgstr
 
         for entry in self.po2:
-            self.entries2[encode(entry.msgid)] = encode(entry.msgstr)
+            self.entries2[entry.msgid] = entry.msgstr
 
-        for msgid, msgstr in items(self.entries2):
+        for msgid, msgstr in self.entries2.items():
             if msgid not in self.entries:
-                writeout("NEW: %s\n+ %s" % (msgid, msgstr))
+                print(f"NEW: {msgid}\n+ {msgstr}")
             else:
                 if msgstr != self.entries[msgid]:
-                    writeout(u"UPDATED: %s\n- %s\n+ %s)" % (
-                        msgid,
-                        self.entries[msgid],
-                        encode(msgstr))
-                    )
+                    print(f"UPDATED: {msgid}\n"
+                          f"- {self.entries[msgid]}\n"
+                          f"+ {msgstr}")
 
-        for msgid, msgstr in items(self.entries):
+        for msgid, msgstr in self.entries.items():
             if msgid not in self.entries2:
-                writeout("DELETED : %s\n- %s" % (msgid, msgstr))
+                print(f"DELETED: {msgid}\n- {msgstr}")
 
 
 def main():
     if len(sys.argv) != 3:
-        writeout("USAGE: %s po_file_v1 po_file_v2\n" % sys.argv[0])
+        print(f"USAGE: {sys.argv[0]} po_file_v1 po_file_v2\n")
         sys.exit(1)
 
     po_file1_path = sys.argv[1]
     po_file2_path = sys.argv[2]
 
     if not os.path.exists(po_file1_path):
-        writeout("File not found %s\n" % po_file1_path)
+        print(f"File not found {po_file1_path}\n")
         sys.exit(2)
 
     if not os.path.exists(po_file2_path):
-        writeout("File not found %s\n" % po_file2_path)
+        print(f"File not found {po_file2_path}\n")
         sys.exit(3)
 
-    podiff = PoDiff(po_file1_path, po_file2_path)
+    podiff = PODiff(po_file1_path, po_file2_path)
     podiff.diff()
 
     sys.exit(0)
