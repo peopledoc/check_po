@@ -1,6 +1,12 @@
 CHANGES
 =======
 
+
+1.0.0
+-----
+
+* Add missing entrypoints
+* Update README badges URLs
 * Install nose to be able to run tests with: python setup.py test
 * Upgrade to pbr 4.3
 * Other cleanups

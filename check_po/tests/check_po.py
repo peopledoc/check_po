@@ -1,7 +1,6 @@
-# -*- coding: utf-8 -*-
 import unittest
 import sys
-from .._compat import StringIO
+from io import StringIO
 
 from ..pochecker import check_pofile, main
 
