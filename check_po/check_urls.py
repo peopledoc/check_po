@@ -3,7 +3,7 @@ import polib
 from collections import defaultdict
 
 
-class CheckUrls(object):
+class CheckUrls:
     def __init__(self, files=None):
         if files is None:
             files = []
@@ -27,10 +27,10 @@ class CheckUrls(object):
             if msgstr and self.entries[msgstr] \
                     and msgid not in self.entries[msgstr]:
                 if msgid.startswith('^') and msgstr in self.entries:
-                    print("DUPLICATE: %s" % msgstr)
+                    print(f"DUPLICATE: {msgstr}")
                     for msg in self.entries[msgstr]:
-                        print("\t\t\t%s" % msg)
-                    print("\t\t\t%s\n" % msgid)
+                        print(f"\t\t\t{msg}")
+                    print(f"\t\t\t{msgid}\n")
             self.entries[msgstr].append(msgid)
 
     def check_urls(self):
@@ -41,7 +41,7 @@ class CheckUrls(object):
 
 def main():
     if len(sys.argv) < 2:
-        print("USAGE: %s <po_files...>\n" % sys.argv[0])
+        print(f"USAGE: {sys.argv[0]} <po_files...>\n")
         sys.exit(1)
 
     url_checker = CheckUrls(sys.argv[1:])

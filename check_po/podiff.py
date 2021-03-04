@@ -3,7 +3,7 @@ import os.path
 import polib
 
 
-class PoDiff(object):
+class PoDiff:
 
     def __init__(self, file1, file2):
         self.po1 = polib.pofile(file1)
@@ -21,34 +21,32 @@ class PoDiff(object):
 
         for msgid, msgstr in self.entries2.items():
             if msgid not in self.entries:
-                print("NEW: %s\n+ %s" % (msgid, msgstr))
+                print(f"NEW: {msgid}\n+ {msgstr}")
             else:
                 if msgstr != self.entries[msgid]:
-                    print(u"UPDATED: %s\n- %s\n+ %s)" % (
-                        msgid,
-                        self.entries[msgid],
-                        msgstr)
-                    )
+                    print(f"UPDATED: {msgid}\n"
+                          f"- {self.entries[msgid]}\n"
+                          f"+ {msgstr}")
 
         for msgid, msgstr in self.entries.items():
             if msgid not in self.entries2:
-                print("DELETED : %s\n- %s" % (msgid, msgstr))
+                print(f"DELETED: {msgid}\n- {msgstr}")
 
 
 def main():
     if len(sys.argv) != 3:
-        print("USAGE: %s po_file_v1 po_file_v2\n" % sys.argv[0])
+        print(f"USAGE: {sys.argv[0]} po_file_v1 po_file_v2\n")
         sys.exit(1)
 
     po_file1_path = sys.argv[1]
     po_file2_path = sys.argv[2]
 
     if not os.path.exists(po_file1_path):
-        print("File not found %s\n" % po_file1_path)
+        print(f"File not found {po_file1_path}\n")
         sys.exit(2)
 
     if not os.path.exists(po_file2_path):
-        print("File not found %s\n" % po_file2_path)
+        print(f"File not found {po_file2_path}\n")
         sys.exit(3)
 
     podiff = PoDiff(po_file1_path, po_file2_path)

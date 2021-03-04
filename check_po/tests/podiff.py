@@ -44,7 +44,7 @@ msgstr "^requete/$"
         self.assertEqual(sys.stdout.getvalue(),
                          '''UPDATED: ^request/$
 - ^demande/$
-+ ^requete/$)
++ ^requete/$
 ''')
 
     def test_add(self):
@@ -79,7 +79,7 @@ msgstr "^demandeur/$"
 """)
         podiff.diff()
         self.assertEqual(sys.stdout.getvalue(),
-                         '''DELETED : ^request/$
+                         '''DELETED: ^request/$
 - ^requete/$
 ''')
 
