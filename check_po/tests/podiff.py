@@ -2,14 +2,14 @@ import unittest
 import sys
 from io import StringIO
 
-from ..podiff import PoDiff, main
+from ..podiff import PODiff, main
 
 
-class PoDiffTestCase(unittest.TestCase):
+class PODiffTestCase(unittest.TestCase):
 
     def test_noconflict(self):
         sys.stdout = StringIO()
-        podiff = PoDiff("""
+        podiff = PODiff("""
 msgid "^request/$"
 msgstr "^demande/$"
 
@@ -27,7 +27,7 @@ msgstr "^demande/$"
 
     def test_diff(self):
         sys.stdout = StringIO()
-        podiff = PoDiff("""
+        podiff = PODiff("""
 msgid "^request/$"
 msgstr "^demande/$"
 
@@ -49,7 +49,7 @@ msgstr "^requete/$"
 
     def test_add(self):
         sys.stdout = StringIO()
-        podiff = PoDiff("""
+        podiff = PODiff("""
 msgid "^requester/$"
 msgstr "^demandeur/$"
 """, """
@@ -67,7 +67,7 @@ msgstr "^requete/$"
 
     def test_deleted(self):
         sys.stdout = StringIO()
-        podiff = PoDiff("""
+        podiff = PODiff("""
 msgid "^request/$"
 msgstr "^requete/$"
 

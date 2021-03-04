@@ -3,7 +3,7 @@ import os.path
 import polib
 
 
-class PoDiff:
+class PODiff:
 
     def __init__(self, file1, file2):
         self.po1 = polib.pofile(file1)
@@ -49,7 +49,7 @@ def main():
         print(f"File not found {po_file2_path}\n")
         sys.exit(3)
 
-    podiff = PoDiff(po_file1_path, po_file2_path)
+    podiff = PODiff(po_file1_path, po_file2_path)
     podiff.diff()
 
     sys.exit(0)

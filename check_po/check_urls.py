@@ -3,7 +3,7 @@ import polib
 from collections import defaultdict
 
 
-class CheckUrls:
+class CheckURLs:
     def __init__(self, files=None):
         if files is None:
             files = []
@@ -44,7 +44,7 @@ def main():
         print(f"USAGE: {sys.argv[0]} <po_files...>\n")
         sys.exit(1)
 
-    url_checker = CheckUrls(sys.argv[1:])
+    url_checker = CheckURLs(sys.argv[1:])
     url_checker.check_urls()
 
     sys.exit(0)

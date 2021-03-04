@@ -5,7 +5,7 @@ from io import StringIO
 from ..pochecker import check_pofile, main
 
 
-class CheckPoTestCase(unittest.TestCase):
+class CheckPOTestCase(unittest.TestCase):
 
     def test_noconflict(self):
         sys.stdout = StringIO()
